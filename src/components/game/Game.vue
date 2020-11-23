@@ -1,6 +1,8 @@
 <template>
   <v-container>
-    <Board/>
+    <v-layout justify-center>
+      <Board/>
+    </v-layout>
   </v-container>
 </template>
 

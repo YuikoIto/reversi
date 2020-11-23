@@ -15,5 +15,6 @@ export default class Cell extends Vue {
     height: 64px;
     width: 64px;
     background-color: darkgreen;
+    border: 1px solid black;
   }
 </style>>
