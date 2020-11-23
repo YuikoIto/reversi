@@ -6,10 +6,12 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
+import { Vue, Component, Prop } from 'vue-property-decorator';
 @Component
 
 export default class Cell extends Vue {
+  @Prop({required: true})
+  public ChangeCell
 }
 </script>
 
