@@ -7,11 +7,13 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
+import { ChangeCell } from '@/models/reversi';
 @Component
 
 export default class Cell extends Vue {
   @Prop({required: true})
-  public ChangeCell
+  //nullを許容する
+  public cell!: ChangeCell
 }
 </script>
 

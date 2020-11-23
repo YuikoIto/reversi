@@ -8,8 +8,10 @@ export class ChangeBoard {
 }
 export class ChangeRow {
   public cells: ChangeCell[];
-  constructor(number: number) {
-    this.cells = [...Array(8).keys()].map(i => new ChangeCell(i, number))
+  public number: number;
+  constructor(rowNumber: number) {
+    this.number = rowNumber
+    this.cells = [...Array(8).keys()].map(i => new ChangeCell(i, rowNumber))
   }
 }
 export class ChangeCell {
