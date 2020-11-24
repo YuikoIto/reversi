@@ -1,7 +1,7 @@
 <template>
   <v-layout>
     <CellView
-      v-for="cell in row.cells"
+      v-for="cell in row.columns"
       :key="`${cell.x}-${cell.y}`"
       :cell="cell"
       @put="onPutEvent"
