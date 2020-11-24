@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-layout justify-center>
-      <Board
+      <BoardView
         :board="board"
       />
     </v-layout>
@@ -10,15 +10,15 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
-import Board from '@/components/game/Board.vue';
-import { ChangeBoard } from '@/models/reversi';
+import BoardView from '@/components/game/BoardView.vue';
+import { Board } from '@/models/reversi';
 @Component({
   components: {
-    Board,
+    BoardView,
   },
 })
 
 export default class Game extends Vue {
-  board: ChangeBoard = new ChangeBoard();
+  board: Board = new Board();
 }
 </script>

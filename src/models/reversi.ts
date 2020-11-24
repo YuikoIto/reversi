@@ -1,5 +1,5 @@
 //ここに処理をまとめて書く
-export class ChangeBoard {
+export class Board {
   rows: Row[];
   //初期値は黒のターン
   turn: ChangeState = ChangeState.Black;
