@@ -16,6 +16,11 @@ export class Board {
     if (!this.reference(p).isNone) {
       return
     }
+    const reversedList = this.search(p);
+    //ひっくり返せるものがなければ石はおけない
+    if (reversedList.length === 0) {
+      return
+    }
     this.reference(p).state = this.turn;
     if(this.turn === CellState.Black) {
       this.turn = CellState.White
