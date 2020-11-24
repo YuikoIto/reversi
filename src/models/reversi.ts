@@ -21,6 +21,7 @@ export class Board {
     if (reversedList.length === 0) {
       return
     }
+    reversedList.forEach(p => this.reference(p).state = this.turn)
     this.reference(p).state = this.turn;
     if(this.turn === CellState.Black) {
       this.turn = CellState.White
