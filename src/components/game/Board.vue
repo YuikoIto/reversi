@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Row
+    <RowView
       v-for="row in board.rows"
       :key="row.number"
       :row="row"
@@ -11,11 +11,11 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
-import Row from '@/components/game/Row.vue';
+import RowView from '@/components/game/RowView.vue';
 import { ChangeBoard } from '@/models/reversi';
 @Component({
   components: {
-    Row,
+    RowView,
   },
 })
 

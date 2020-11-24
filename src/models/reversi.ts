@@ -1,10 +1,10 @@
 //ここに処理をまとめて書く
 export class ChangeBoard {
-  rows: ChangeRow[];
+  rows: Row[];
   //初期値は黒のターン
   turn: ChangeState = ChangeState.Black;
   constructor() {
-    this.rows = [...Array(8).keys()].map(i => new ChangeRow(i))
+    this.rows = [...Array(8).keys()].map(i => new Row(i))
     this.rows[3].cells[3].state = ChangeState.White;
     this.rows[4].cells[4].state = ChangeState.White;
     this.rows[3].cells[4].state = ChangeState.Black;
@@ -24,15 +24,15 @@ export class ChangeBoard {
     }
   }
 }
-export class ChangeRow {
-  cells: ChangeCell[];
+export class Row {
+  cells: Cell[];
   number: number;
   constructor(rowNumber: number) {
     this.number = rowNumber
-    this.cells = [...Array(8).keys()].map(i => new ChangeCell(i, rowNumber))
+    this.cells = [...Array(8).keys()].map(i => new Cell(i, rowNumber))
   }
 }
-export class ChangeCell {
+export class Cell {
   x: number;
   y: number;
   state: ChangeState = ChangeState.None;
