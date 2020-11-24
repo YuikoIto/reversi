@@ -1,12 +1,12 @@
 <template>
-  <div class="wrapper">
+  <div class="wrapper" @click="click">
     <div class="cell"></div>
     <div class="othello-stone" :class="stoneClass"></div>
   </div>
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator';
+import { Vue, Component, Prop, Emit } from 'vue-property-decorator';
 import { ChangeCell } from '@/models/reversi';
 @Component
 
@@ -14,8 +14,6 @@ export default class Cell extends Vue {
   @Prop({required: true})
   //nullを許容する
   public cell!: ChangeCell
-  public created() {
-  }
 
   //cellの状態に応じて動的にクラス名を変える
   public get stoneClass() {
@@ -23,6 +21,12 @@ export default class Cell extends Vue {
       'white-stone': this.cell.isWhite,
       'black-stone': this.cell.isBlack
     }
+  }
+
+  @Emit('put')
+  public put(x: number, y: number) {}
+  public click() {
+    this.put(this.cell.x, this.cell.y)
   }
 }
 </script>

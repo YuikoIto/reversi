@@ -3,7 +3,9 @@
     <Row
       v-for="row in board.rows"
       :key="row.number"
-      :row="row"/>
+      :row="row"
+      @put="onPutEvent"
+    />
   </div>
 </template>
 
@@ -20,5 +22,9 @@ import { ChangeBoard } from '@/models/reversi';
 export default class Board extends Vue {
   @Prop({required: true})
   public board!: ChangeBoard;
+
+  public onPutEvent(x: number, y: number) {
+    this.board.put(x, y)
+  }
 }
 </script>

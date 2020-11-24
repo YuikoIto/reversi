@@ -9,6 +9,10 @@ export class ChangeBoard {
     this.rows[3].cells[4].state = ChangeState.Black;
     this.rows[4].cells[3].state = ChangeState.Black;
   }
+
+  public put(x: number, y: number) {
+    this.rows[y].cells[x].state = ChangeState.Black;
+  }
 }
 export class ChangeRow {
   public cells: ChangeCell[];
