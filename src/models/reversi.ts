@@ -4,6 +4,10 @@ export class ChangeBoard {
   public rows: ChangeRow[];
   constructor() {
     this.rows = [...Array(8).keys()].map(i => new ChangeRow(i))
+    this.rows[3].cells[3].state = ChangeState.White;
+    this.rows[4].cells[4].state = ChangeState.White;
+    this.rows[3].cells[4].state = ChangeState.Black;
+    this.rows[4].cells[3].state = ChangeState.Black;
   }
 }
 export class ChangeRow {
@@ -21,6 +25,14 @@ export class ChangeCell {
   constructor(x: number, y: number) {
     this.x = x;
     this.y = y;
+  }
+
+  public get isBlack() {
+    return this.state === ChangeState.Black;
+  }
+
+  public get isWhite() {
+    return this.state === ChangeState.White;
   }
 }
 export enum ChangeState {

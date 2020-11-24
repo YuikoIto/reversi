@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <div class="cell"></div>
-    <div class="othello-stone"></div>
+    <div class="othello-stone" :class="stoneClass"></div>
   </div>
 </template>
 
@@ -14,6 +14,16 @@ export default class Cell extends Vue {
   @Prop({required: true})
   //nullを許容する
   public cell!: ChangeCell
+  public created() {
+  }
+
+  //cellの状態に応じて動的にクラス名を変える
+  public get stoneClass() {
+    return {
+      'white-stone': this.cell.isWhite,
+      'black-stone': this.cell.isBlack
+    }
+  }
 }
 </script>
 
@@ -29,18 +39,18 @@ export default class Cell extends Vue {
   }
   .othello-stone {
     position: absolute;
-    top: 1px;
-    left: 1px;
-    height: 62px;
-    width: 62px;
+    top: 2px;
+    left: 2px;
+    height: 60px;
+    width: 60px;
     border-radius: 50%;
   }
 
   .black-stone {
-    background-color: white;
+    background-color: black;
   }
 
   .white-stone {
-    background-color: black;
+    background-color: white;
   }
 </style>>
