@@ -7,16 +7,16 @@
 
 <script lang="ts">
 import { Vue, Component, Prop, Emit } from 'vue-property-decorator';
-import { Cell } from '@/models/reversi';
+import { Cell, Point } from '@/models/reversi';
 @Component
 
 export default class CellView extends Vue {
   @Prop({required: true})
   //nullを許容する
-  public cell!: Cell
+  cell!: Cell
 
   //cellの状態に応じて動的にクラス名を変える
-  public get stoneClass() {
+  get stoneClass() {
     return {
       'white-stone': this.cell.isWhite,
       'black-stone': this.cell.isBlack
@@ -24,10 +24,10 @@ export default class CellView extends Vue {
   }
 
   @Emit('put')
-  public put(x: number, y: number) {
+  put(p: Point) {
   }
-  public click() {
-    this.put(this.cell.x, this.cell.y)
+  click() {
+    this.put(new Point(this.cell.x, this.cell.y))
   }
 }
 </script>

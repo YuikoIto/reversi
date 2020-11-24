@@ -12,7 +12,7 @@
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import RowView from '@/components/game/RowView.vue';
-import { Board } from '@/models/reversi';
+import { Board, Point } from '@/models/reversi';
 @Component({
   components: {
     RowView,
@@ -24,8 +24,8 @@ export default class BoardView extends Vue {
   //nullを許容する
   board!: Board;
 
-  onPutEvent(x: number, y: number) {
-    this.board.put(x, y)
+  onPutEvent(p: Point) {
+    this.board.put(p)
   }
 }
 </script>

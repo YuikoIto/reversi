@@ -12,7 +12,7 @@
 <script lang="ts">
 import { Vue, Component, Prop, Emit } from 'vue-property-decorator';
 import CellView from '@/components/game/CellView.vue';
-import { Row } from '@/models/reversi';
+import { Row, Point } from '@/models/reversi';
 @Component({
   components: {
     CellView
@@ -24,10 +24,10 @@ export default class RowView extends Vue {
   row!: Row
 
   @Emit('put')
-  put(x: number, y: number) {}
+  put(p: Point) {}
 
-  onPutEvent(x: number, y: number) {
-    this.put(x, y);
+  onPutEvent(p: Point) {
+    this.put(p);
   }
 }
 </script>

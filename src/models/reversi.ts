@@ -11,12 +11,12 @@ export class Board {
     this.rows[4].columns[3].state = CellState.Black;
   }
 
-  put(x: number, y: number) {
+  put(p: Point) {
     //すでに石をおいてあるところには何もしない
-    if (!this.rows[y].columns[x].isNone) {
+    if (!this.reference(p).isNone) {
       return
     }
-    this.rows[y].columns[x].state = this.turn;
+    this.reference(p).state = this.turn;
     if(this.turn === CellState.Black) {
       this.turn = CellState.White
     } else {
