@@ -21,12 +21,12 @@ import { ChangeRow } from '@/models/reversi';
 
 export default class Row extends Vue {
   @Prop({required: true})
-  public row!: ChangeRow
+  row!: ChangeRow
 
   @Emit('put')
-  public put(x: number, y: number) {}
+  put(x: number, y: number) {}
 
-  public onPutEvent(x: number, y: number) {
+  onPutEvent(x: number, y: number) {
     this.put(x, y);
   }
 }

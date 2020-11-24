@@ -19,6 +19,6 @@ import { ChangeBoard } from '@/models/reversi';
 })
 
 export default class Game extends Vue {
-  public board: ChangeBoard = new ChangeBoard();
+  board: ChangeBoard = new ChangeBoard();
 }
 </script>

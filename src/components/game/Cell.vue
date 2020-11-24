@@ -13,10 +13,10 @@ import { ChangeCell } from '@/models/reversi';
 export default class Cell extends Vue {
   @Prop({required: true})
   //nullを許容する
-  public cell!: ChangeCell
+  cell!: ChangeCell
 
   //cellの状態に応じて動的にクラス名を変える
-  public get stoneClass() {
+  get stoneClass() {
     return {
       'white-stone': this.cell.isWhite,
       'black-stone': this.cell.isBlack
@@ -24,8 +24,8 @@ export default class Cell extends Vue {
   }
 
   @Emit('put')
-  public put(x: number, y: number) {}
-  public click() {
+  put(x: number, y: number) {}
+  click() {
     this.put(this.cell.x, this.cell.y)
   }
 }

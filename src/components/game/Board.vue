@@ -21,9 +21,10 @@ import { ChangeBoard } from '@/models/reversi';
 
 export default class Board extends Vue {
   @Prop({required: true})
-  public board!: ChangeBoard;
+  //nullを許容する
+  board!: ChangeBoard;
 
-  public onPutEvent(x: number, y: number) {
+  onPutEvent(x: number, y: number) {
     this.board.put(x, y)
   }
 }

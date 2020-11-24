@@ -1,7 +1,8 @@
 //ここに処理をまとめて書く
-//TODO 後でpublicをprivateに変える
 export class ChangeBoard {
-  public rows: ChangeRow[];
+  rows: ChangeRow[];
+  //初期値は黒のターン
+  turn: ChangeState = ChangeState.Black;
   constructor() {
     this.rows = [...Array(8).keys()].map(i => new ChangeRow(i))
     this.rows[3].cells[3].state = ChangeState.White;
@@ -10,33 +11,46 @@ export class ChangeBoard {
     this.rows[4].cells[3].state = ChangeState.Black;
   }
 
-  public put(x: number, y: number) {
-    this.rows[y].cells[x].state = ChangeState.Black;
+  put(x: number, y: number) {
+    //すでに石をおいてあるところには何もしない
+    if (!this.rows[y].cells[x].isNone) {
+      return
+    }
+    this.rows[y].cells[x].state = this.turn;
+    if(this.turn === ChangeState.Black) {
+      this.turn = ChangeState.White
+    } else {
+      this.turn = ChangeState.Black
+    }
   }
 }
 export class ChangeRow {
-  public cells: ChangeCell[];
-  public number: number;
+  cells: ChangeCell[];
+  number: number;
   constructor(rowNumber: number) {
     this.number = rowNumber
     this.cells = [...Array(8).keys()].map(i => new ChangeCell(i, rowNumber))
   }
 }
 export class ChangeCell {
-  public x: number;
-  public y: number;
-  public state: ChangeState = ChangeState.None;
+  x: number;
+  y: number;
+  state: ChangeState = ChangeState.None;
   constructor(x: number, y: number) {
     this.x = x;
     this.y = y;
   }
 
-  public get isBlack() {
+  get isBlack(): boolean {
     return this.state === ChangeState.Black;
   }
 
-  public get isWhite() {
+  get isWhite(): boolean {
     return this.state === ChangeState.White;
+  }
+
+  get isNone(): boolean {
+    return this.state === ChangeState.None;
   }
 }
 export enum ChangeState {
