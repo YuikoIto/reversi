@@ -72,7 +72,7 @@ export class Point {
   }
   //盤の中に座標があることを確認する
   get inBoard() {
-    return 0 <= this.x && this.x <= 7 && this.y && this.y <= 7
+    return 0 <= this.x && this.x <= 7 && 0 <= this.y && this.y <= 7
   }
 }
 export class Row {
