@@ -7,6 +7,8 @@
     </v-layout>
     <v-layout justify-center>
       <h2>{{ currentUser }}</h2>
+      <h2>白: {{ board.whites }}</h2>
+      <h2>黒: {{ board.blacks }}</h2>
     </v-layout>
   </v-container>
 </template>

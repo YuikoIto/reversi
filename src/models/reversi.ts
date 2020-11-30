@@ -60,6 +60,22 @@ export class Board {
     result = result.concat(_search(p, p => new Point(p.x - 1, p.y - 1), []));
     return result; 
   }
+
+  get blacks(): number {
+    let counts = 0;
+    this.rows.forEach(count => {
+      counts += count.blacks
+    });
+    return counts;
+  }
+
+  get whites(): number {
+    let counts = 0;
+    this.rows.forEach(count => {
+      counts += count.whites
+    });
+    return counts;
+  }
 }
 
 //座標をまとめたもの
@@ -81,6 +97,22 @@ export class Row {
   constructor(rowNumber: number) {
     this.number = rowNumber
     this.columns = [...Array(8).keys()].map(i => new Cell(i, rowNumber))
+  }
+
+  get blacks(): number {
+    let counts = 0;
+    this.columns.forEach(count => {
+      if (count.isBlack) counts ++
+    });
+    return counts;
+  }
+
+  get whites(): number {
+    let counts = 0;
+    this.columns.forEach(count => {
+      if (count.isWhite) counts ++
+    });
+    return counts;
   }
 }
 export class Cell {
